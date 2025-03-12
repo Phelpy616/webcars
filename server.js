@@ -18,11 +18,31 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 // API routes
-const api = require('./api');
-app.use("/api", api);
+const carsRoute = require("./api/cars");
+const carsByMakeRoute = require("./api/carsByMake");
+const favoriteCarRoute = require("./api/favoriteCar");
+const favoritesRoute = require("./api/favorites");
+const getUserRoute = require("./api/getUser");
+const individualCarRoute = require("./api/individualCar");
+const loginRoute = require("./api/login");
+const logOutRoute = require("./api/logout");
+const sellACarRoute = require("./api/sellACar");
+const sendEmailRoute = require("./api/sendEmail");
+const signupRoute = require("./api/signup");
+const updateCarRoute = require("./api/updateCar");
 
-
-// app.use("/api", require("api")); // This loads all the route handlers in the 'api' folder
+app.use("/api/cars", carsRoute);
+app.use("/api/carsByMake", carsByMakeRoute);
+app.use("/api/favoriteCar", favoriteCarRoute);
+app.use("/api/favorites", favoritesRoute);
+app.use("/api/getUser", getUserRoute);
+app.use("/api/individualCar", individualCarRoute);
+app.use("/api/login", loginRoute);
+app.use("/api/logout", logOutRoute);
+app.use("/api/sellACar", sellACarRoute);
+app.use("/api/sendEmail", sendEmailRoute);
+app.use("/api/signup", signupRoute);
+app.use("/api/updateCar", updateCarRoute);
 
 // Catch-all route for front-end to handle any unmatched routes
 app.get("*", (req, res) => {
