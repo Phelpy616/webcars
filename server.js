@@ -33,7 +33,7 @@ const updateCarRoute = require("./api/updateCar");
 // Defining the routes
 app.use("/api/cars", carsRoute);
 app.use("/api/carsByMake", carsByMakeRoute);
-app.use("/api/favoriteCar", favoriteCarRoute);
+app.use("/api/favoriteCar/:carId", favoriteCarRoute);
 app.use("/api/favorites", favoritesRoute);
 app.use("/api/getUser", getUserRoute);
 app.use("/api/individualCar/:carId", individualCarRoute);
