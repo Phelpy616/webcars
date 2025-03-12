@@ -17,12 +17,14 @@ if (!global.mongoose) {
 //get individual car
 module.exports = async (req, res) => {
   if(req.method==='GET'){
+    console.log(req.params.carId)
+
     // Check if the ID is a valid MongoDB ObjectId
   if (!mongoose.Types.ObjectId.isValid(req.params.carId)) {
     return res.json({ message: "Invalid car ID" });
   }
 
-  console.log(req.params.carId)
+
 
   try {
     const car = await Car.findById(req.params.carId);
