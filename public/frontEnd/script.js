@@ -211,7 +211,8 @@ try {
         return;
       }
 
-      await fetch(`../api/cars/${event.target.closest(".car-card").dataset.carid}`)
+      // await fetch(`../api/cars/${event.target.closest(".car-card").dataset.carid}`)
+      await fetch(`../api/individualCar/${event.target.closest(".car-card").dataset.carid}`)
         .then((response) => response.json())
         .then((data) => {
           localStorage.setItem("ClickedCarId", JSON.stringify(data.car._id));
