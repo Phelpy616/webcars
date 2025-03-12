@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const jwt = require("jsonwebtoken");
+const cookie = require("cookie"); // Add this import
 const { User } = require("../models"); 
 
 // Use a global variable to prevent multiple connections in serverless environments
