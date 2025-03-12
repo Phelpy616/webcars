@@ -643,6 +643,8 @@ if (window.location.pathname.endsWith("favorites.html")) {
         fetch(`../api/cars/${carId}`)
           .then((response) => response.json())
           .then((carData) => {
+            console.log(carData)
+
             const carList = document.querySelector(".car-list-favorites");
 
             const isFavorite = favoriteCarIds.includes(carId);
