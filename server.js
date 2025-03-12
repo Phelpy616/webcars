@@ -18,7 +18,11 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
 // API routes
-app.use("/api", require("api")); // This loads all the route handlers in the 'api' folder
+const api = require('./api');
+app.use("/api", api);
+
+
+// app.use("/api", require("api")); // This loads all the route handlers in the 'api' folder
 
 // Catch-all route for front-end to handle any unmatched routes
 app.get("*", (req, res) => {
