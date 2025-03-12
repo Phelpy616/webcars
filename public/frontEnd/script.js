@@ -794,7 +794,8 @@ try {
     const carId = JSON.parse(localStorage.getItem("ClickedCarId"));
 
     const carOwnerEmail = await (async function fetchCarData() {
-      const response = await fetch(`../api/cars/${carId}`);
+      // const response = await fetch(`../api/cars/${carId}`);
+      const response = await fetch(`../api/individualCar/${carId}`);
       const carData = await response.json();
       return carData.car.carOwnerEmail;
     })();
