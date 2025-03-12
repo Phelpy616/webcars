@@ -227,7 +227,8 @@ try {
 if (localStorage.getItem("ClickedCarId")) {
   const carId = JSON.parse(localStorage.getItem("ClickedCarId"));
 
-  fetch(`../api/cars/${carId}`)
+  // fetch(`../api/cars/${carId}`)
+  fetch(`../api/individualCar/${carId}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data.car);
