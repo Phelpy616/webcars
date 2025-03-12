@@ -513,39 +513,42 @@ try {
 } catch {}
 
 //Dinamically insert the username in the logged field at the header
-fetch("../api/getUser", {
-  method: "GET",
-})
-  .then((response) => response.json())
-  .then((data) => {
-    if(!data)return console.log(data.message)
-      console.log(data)
-
-    if (data.currentUser) {
-      console.log("Logged in user:", data.currentUser);
-      localStorage.setItem("loggedUserId", data.currentUser._id);
-      localStorage.setItem("loggedUserEmail", data.currentUser.email);
-
-      if (window.innerWidth > 450) {
-        const logged = document.querySelector(".logged");
-        const html = `<h2>${data.currentUser.name}</h2>`;
-
-        logged.insertAdjacentHTML("afterbegin", html);
-      } else {
-        const nameAndEmailInMenu = document.querySelector(
-          ".menu .menuScndChild .nameAndEmail"
-        );
-        const html = `  
-        <h2>${data.currentUser.name}</h2>
-        <h2>${data.currentUser.email}</h2>`;
-
-        nameAndEmailInMenu.insertAdjacentHTML("afterbegin", html);
-      }
-    } else {
-      console.log("No user found or not logged in.");
-    }
+if(localStorage.getItem('isLoggedIn')==='yes'){
+  fetch("../api/getUser", {
+    method: "GET",
   })
-  .catch((error) => console.error("Error fetching user:", error));
+    .then((response) => response.json())
+    .then((data) => {
+      if(!data)return console.log(data.message)
+        console.log(data)
+  
+      if (data.currentUser) {
+        console.log("Logged in user:", data.currentUser);
+        localStorage.setItem("loggedUserId", data.currentUser._id);
+        localStorage.setItem("loggedUserEmail", data.currentUser.email);
+  
+        if (window.innerWidth > 450) {
+          const logged = document.querySelector(".logged");
+          const html = `<h2>${data.currentUser.name}</h2>`;
+  
+          logged.insertAdjacentHTML("afterbegin", html);
+        } else {
+          const nameAndEmailInMenu = document.querySelector(
+            ".menu .menuScndChild .nameAndEmail"
+          );
+          const html = `  
+          <h2>${data.currentUser.name}</h2>
+          <h2>${data.currentUser.email}</h2>`;
+  
+          nameAndEmailInMenu.insertAdjacentHTML("afterbegin", html);
+        }
+      } else {
+        console.log("No user found or not logged in.");
+      }
+    })
+    .catch((error) => console.error("Error fetching user:", error));
+  
+}
 
 //Dinamically insert the username and user email
 //in the logged field in favorites page/ user page
