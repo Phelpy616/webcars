@@ -640,6 +640,7 @@ if (window.location.pathname.endsWith("favorites.html")) {
       const favoriteCarIds = data.currentUser.favorites;
       console.log(data.currentUser, favoriteCarIds);
       favoriteCarIds.forEach((carId) => {
+        console.log(carId)
         // fetch(`../api/cars/${carId}`)
         fetch(`../api/individualCar/${carId}`)
           .then((response) => response.json())

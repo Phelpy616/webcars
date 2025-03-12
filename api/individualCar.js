@@ -22,6 +22,8 @@ module.exports = async (req, res) => {
     return res.json({ message: "Invalid car ID" });
   }
 
+  console.log(req.params.carId)
+
   try {
     const car = await Car.findById(req.params.carId);
     if (!car) {
