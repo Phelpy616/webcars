@@ -35,12 +35,14 @@ module.exports= async (req, res) => {
     expiresIn: process.env.JWT_EXPIRE_TIME,
   });
 
-  res.cookie("jwt", token, {
+  // Use the cookie module to manually set the cookie in the response header
+  res.setHeader('Set-Cookie', cookie.serialize('jwt', token, {
     httpOnly: true,
-    secure: true, //set to true when you host
-    sameSite: "strict",
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-  });
+    secure: true, // Set to true when in production with HTTPS
+    sameSite: 'strict',
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
+    path: '/', // Makes the cookie available across the entire site
+  }));
 
   res.json({ message: "User logged in!" });
   }
