@@ -16,7 +16,7 @@ app.use(cors());
 // Serve front-end static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// API routes
+// API routes, pointing to the file where the route logic is defined
 const carsRoute = require("./api/cars");
 const carsByMakeRoute = require("./api/carsByMake");
 const favoriteCarRoute = require("./api/favoriteCar");
@@ -30,12 +30,13 @@ const sendEmailRoute = require("./api/sendEmail");
 const signupRoute = require("./api/signup");
 const updateCarRoute = require("./api/updateCar");
 
+// Defining the routes
 app.use("/api/cars", carsRoute);
 app.use("/api/carsByMake", carsByMakeRoute);
 app.use("/api/favoriteCar", favoriteCarRoute);
 app.use("/api/favorites", favoritesRoute);
 app.use("/api/getUser", getUserRoute);
-app.use("/api/individualCar", individualCarRoute);
+app.use("/api/individualCar/:carId", individualCarRoute);
 app.use("/api/login", loginRoute);
 app.use("/api/logout", logOutRoute);
 app.use("/api/sellACar", sellACarRoute);
