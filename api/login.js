@@ -36,7 +36,7 @@ module.exports= async (req, res) => {
 
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: false, //set to true when you host
+    secure: true, //set to true when you host
     sameSite: "strict",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
