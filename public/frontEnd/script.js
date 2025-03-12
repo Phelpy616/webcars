@@ -1,3 +1,4 @@
+//this comment is just to trigger a deployment
 /*automatic car img change for desktop*/
 const images = document.querySelectorAll(".topSlider img");
 let index = 0;
