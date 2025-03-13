@@ -547,7 +547,8 @@ if(localStorage.getItem('isLoggedIn')==='yes'){
 
 //Dinamically insert the username and user email
 //in the logged field in favorites page/ user page
-if (window.location.pathname.endsWith("favorites.html")) {
+if (window.location.pathname.endsWith("favorites.html") && 
+    localStorage.getItem('isLoggedIn') === 'yes') {
   fetch("../api/getUser")
     .then((response) => response.json())
     .then((data) => {
