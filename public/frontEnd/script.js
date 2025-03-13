@@ -48,7 +48,7 @@ fetch("../api/cars")
 
         const html = `
         <div class="carPreview car-card" data-carid="${car._id}">
-          <div> <!-- <img src="http://localhost:3000/images/${car.images[0]}" /> --> </div>
+          <div><img src="${car.images[0]}"</div>
           <p class="name">${car.make} ${car.model}</p>
           <p>${car.gearbox}</p>
           <h2>$${car.price}</h2>
@@ -76,7 +76,7 @@ fetch("../api/cars")
 
         const html = `
          <div class="car-card-mobile car-card" data-carid="${car._id}">
-          <div> <!-- <img src="http://localhost:3000/images/${car.images[0]}"/> --> </div>
+          <div><img src="${car.images[0]}"/></div>
 
           <div>
             <p class="model">${car.model}</p>
@@ -147,9 +147,7 @@ if (window.location.pathname.endsWith("carsByMake.html")) {
           window.innerWidth > 450
             ? `
         <div class="carPreview car-card" data-carid="${car._id}">
-          <div> <!-- <img src="http://localhost:3000/images/${
-            car.images[0]
-          }" alt="" /> --> </div>
+          <div><img src="${car.images[0]}"/></div>
           <p class="name">${car.make} ${car.model}</p>
           <p>${car.gearbox}</p>
           <h2>$${car.price}</h2>
@@ -167,12 +165,7 @@ if (window.location.pathname.endsWith("carsByMake.html")) {
           </div>
         </div>`
             : `<div class="car-card-mobile car-card" data-carid="${car._id}">
-          <div>
-            <!-- <img
-              src="http://localhost:3000/images/${car.images[0]}"
-              alt=""
-            /> -->
-          </div>
+          <div><img src="${car.images[0]}"/></div>
 
           <div>
             <p class="model">${car.model}</p>
@@ -243,16 +236,16 @@ if (localStorage.getItem("ClickedCarId")) {
           <button class="prev">&#10094;</button>
 
           <div class="slider-container">
-            <!-- <img class="slider-image" src="http://localhost:3000/images/${data.car.images[0]}"/> -->
+            <img class="slider-image" src="${data.car.images[0]}"/>
           </div>
 
           <button class="next">&#10095;</button>
         </div>`
-          : ` <div> <!-- <img src="http://localhost:3000/images/${data.car.images[0]}"/> --> </div>
+          : ` <div><img src="${data.car.images[0]}"/></div>
 
-        <div> <!-- <img src="http://localhost:3000/images/${data.car.images[1]}"/> --> </div>
+        <div><img src="${data.car.images[1]}"/></div>
   
-        <div> <!-- <img src="http://localhost:3000/images/${data.car.images[2]}"/> --> </div> `;
+        <div><img src="${data.car.images[2]}"/></div> `;
 
       const carPhotos = document.querySelector(".carPhotos");
       carPhotos.insertAdjacentHTML("afterbegin", carPhotosElements);
@@ -274,7 +267,7 @@ if (localStorage.getItem("ClickedCarId")) {
             currentIndex = 0;
           }
 
-          // imageOfSlider.src = `http://localhost:3000/images/${images[currentIndex]}`;
+          imageOfSlider.src = `${images[currentIndex]}`;
         });
 
         btnPrev.addEventListener("click", () => {
@@ -284,7 +277,7 @@ if (localStorage.getItem("ClickedCarId")) {
             currentIndex = images.length - 1;
           }
 
-          // imageOfSlider.src = `http://localhost:3000/images/${images[currentIndex]}`;
+          imageOfSlider.src = `${images[currentIndex]}`;
         });
       } catch {}
 
@@ -658,9 +651,7 @@ if (window.location.pathname.endsWith("favorites.html")) {
                 ? ` <div class="carPreview car-card" data-carid="${
                     carData.car._id
                   }">
-                  <div> <!-- <img src="http://localhost:3000/images/${
-                    carData.car.images[0]
-                  }" /> --> </div>
+                  <div><img src="${carData.car.images[0]}" /></div>
                   <p class="name">${carData.car.make} ${carData.car.model}</p>
                   <p>${carData.car.gearbox}</p>
                   <h2>$${carData.car.price}</h2>
@@ -684,11 +675,7 @@ if (window.location.pathname.endsWith("favorites.html")) {
                 : `<div class="car-card-mobile car-card" data-carid="${
                     carData.car._id
                   }">
-                    <div>
-                      <!-- <img src="http://localhost:3000/images/${
-                        carData.car.images[0]
-                      }"> -->
-                    </div>
+                    <div><img src="${carData.car.images[0]}"></div>
 
                     <div>
                       <p class="model">${carData.car.model}</p>
