@@ -39,7 +39,7 @@ app.use("/api/logout", logOutRoute);
 app.use("/api/sellACar", sellACarRoute);
 app.use("/api/sendEmail", sendEmailRoute);
 app.use("/api/signup", signupRoute);
-app.use("/api/updateCar", updateCarRoute);
+app.use("/api/updateCar/:carId", updateCarRoute);
 
 // Catch-all route for front-end to handle any unmatched routes
 app.get("*", (req, res) => {

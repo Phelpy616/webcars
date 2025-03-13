@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const multer = require("multer");
-const path = require("path"); // Require path module
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+const cloudinary = require('cloudinary').v2
 const { User, Car } = require("../models"); 
 
 // Use a global variable to prevent multiple connections in serverless environments
@@ -16,37 +17,32 @@ if (!global.mongoose) {
     .catch((error) => console.log(error));
 }
 
-const multerStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, "../public/images"));
-    },
-    filename: (req, file, cb) => {
-      const ext = file.mimetype.split("/")[1];
-      cb(null, `${file.originalname.split('.')[0]}-${Date.now()}.${ext}`);
-    },
-  });
-  
-  const multerFilter = (req, file, cb) => {
-    if (file.mimetype.startsWith("image")) {
-      cb(null, true);
-    } else {
-      cb(new Error("Not an image! Only images allowed."), false);
-    }
-  };
-  
-  const upload = multer({
-    storage: multerStorage,
-    fileFilter: multerFilter,
-  });
+cloudinary.config({
+  cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+})
+
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params:{
+    folder: "cars_images",
+    format: async (req, file) => 'jpeg',
+    public_id:(req, file) => `${Date.now()}-${file.originalname}`
+  }
+})
+
+
+  const upload = multer({ storage });
 
 module.exports=[
   upload.array("images", 3),
   async (req, res)=>{
   if(req.method==='PATCH'){
-    const  carId  = req.params.carId;
+  const  carId  = req.params.carId;
   const userEmail = req.body.userEmail;
   const updateData = { ...req.body }; // Copy request body
-  const images = req.files.map((file) => file.filename);
+  const images = req.files.map((file) => file.path);
 
 
   const user = await  User.findOne({email: userEmail})
