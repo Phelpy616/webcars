@@ -901,7 +901,7 @@ try {
           localStorage.removeItem("loggedUserEmail");
 
           window.location.reload();
-          window.location.href === "https://webcars.onrender.com"; // Redirect to login page
+          window.location.href === "https://webcars.onrender.com/frontEnd/index.html"; // Redirect to login page
         })
         .catch((error) => console.error("Logout failed:", error));
     });
