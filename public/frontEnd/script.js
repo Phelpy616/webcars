@@ -36,9 +36,17 @@ try {
 } catch (error) {}
 
 //fetching all cars
+if(window.location.pathname.endsWith('carsPage.html')){
+  const loading = document.querySelector('.loading img');
+  loading.classList.add('display')
+}
+
 fetch("../api/cars")
   .then((response) => response.json())
   .then(async (data) => {
+    const loading = document.querySelector('.loading img');
+    loading.classList.remove('display')
+
     const carArray = data.cars;
     const favoriteCarIds = await fetchFavorites(); // Get the user's favorite car IDs
 

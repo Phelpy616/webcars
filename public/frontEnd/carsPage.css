@@ -104,6 +104,32 @@ body {
   margin-top: 88px;
 }
 
+.car-list .loading{
+  width: 1050px;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-list .loading img{
+  animation: spin 1s linear infinite;
+  width: 30px;
+}
+
+.car-list .loading img.display{
+  display: flex;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .carPreview {
   width: 279px;
   height: 400px;
