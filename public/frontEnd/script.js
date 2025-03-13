@@ -861,6 +861,8 @@ try {
 //Log out
 const logOutP = document.querySelector(".logOut");
 const logOutPMobile = document.querySelector(".logOutContainer h2");
+console.log(logOutPMobile); // Add this to check if the element exists
+
 try {
   if (window.innerWidth > 450) {
     logOutP.addEventListener("click", () => {
@@ -882,10 +884,13 @@ try {
     });
   } else {
     logOutPMobile.addEventListener("click", () => {
-      fetch("../api/logout", { method: "POST" })
+      fetch("../api/logout", { 
+        method: "POST",
+        credentials: "include"
+      })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.message); // Logs "Logged out successfully"
+          console.log(data, data.message); // Logs "Logged out successfully"
 
           localStorage.removeItem("ClickedCarId");
           localStorage.removeItem("carMake");
@@ -895,6 +900,7 @@ try {
           localStorage.removeItem("loggedUserEmail");
 
           window.location.href = "/frontEnd/login.html"; // Redirect to login page
+          window.location.reload(); // Force page refresh
         })
         .catch((error) => console.error("Logout failed:", error));
     });
