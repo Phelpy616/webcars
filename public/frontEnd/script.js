@@ -899,8 +899,7 @@ try {
           localStorage.removeItem("loggedUserId");
           localStorage.removeItem("loggedUserEmail");
 
-          // window.location.href = "/frontEnd/login.html"; // Redirect to login page
-          window.location.replace("/frontEnd/login.html");
+          window.location.href === "https://webcars.onrender.com/frontEnd/login.html"; // Redirect to login page
           window.location.reload(); // Force page refresh
         })
         .catch((error) => console.error("Logout failed:", error));
@@ -963,6 +962,8 @@ if (window.innerWidth < 450) {
       ) {
         return alert("You need to log in.");
       }
+
+      if(h2.textContent === 'Log out') return
 
       window.location.href = h2.dataset.url;
     });
