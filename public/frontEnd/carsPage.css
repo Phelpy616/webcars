@@ -112,14 +112,15 @@ body {
   justify-content: center;
 }
 
+.car-list .loading.display{
+  display: flex;
+}
+
 .car-list .loading img{
   animation: spin 1s linear infinite;
   width: 30px;
 }
 
-.car-list .loading img.display{
-  display: flex;
-}
 
 @keyframes spin {
   from {

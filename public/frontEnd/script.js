@@ -37,14 +37,14 @@ try {
 
 //fetching all cars
 if(window.location.pathname.endsWith('carsPage.html')){
-  const loading = document.querySelector('.loading img');
+  const loading = document.querySelector('.loading');
   loading.classList.add('display')
 }
 
 fetch("../api/cars")
   .then((response) => response.json())
   .then(async (data) => {
-    const loading = document.querySelector('.loading img');
+    const loading = document.querySelector('.loading');
     loading.classList.remove('display')
 
     const carArray = data.cars;
