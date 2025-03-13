@@ -927,6 +927,11 @@ try {
 const headerH2s = document.querySelectorAll(".header .navigation h2");
 headerH2s.forEach((h2) => {
   h2.addEventListener("click", () => {
+    if(h2.textContent === "Sell" &&
+       localStorage.getItem("isLoggedIn") != "yes"){
+        return alert("Please log in.")
+       }
+       
     window.location.href = h2.dataset.url;
   });
 });
@@ -958,6 +963,13 @@ if (window.innerWidth < 450) {
     h2.addEventListener("click", () => {
       if (
         h2.textContent === "Favorites" &&
+        localStorage.getItem("isLoggedIn") != "yes"
+      ) {
+        return alert("You need to log in.");
+      }
+
+      if (
+        h2.textContent === "Sell your car" &&
         localStorage.getItem("isLoggedIn") != "yes"
       ) {
         return alert("You need to log in.");
