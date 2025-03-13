@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const multer = require("multer");
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+const cloudinary = require('cloudinary').v2
 const isThereLoggedUser = require("../middlewares");
 const { Car } = require("../models"); 
 
@@ -17,29 +19,22 @@ if (!global.mongoose) {
     .catch((error) => console.log(error));
 }
 
+cloudinary.config({
+  cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+})
 
-const multerStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/images");
-  },
-  filename: (req, file, cb) => {
-    const ext = file.mimetype.split("/")[1];
-    cb(null, `${Date.now()}.${ext}`);
-  },
-});
-
-const multerFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith("image")) {
-    cb(null, true);
-  } else {
-    cb(new Error("Not an image! Only images allowed."), false);
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params:{
+    folder: "cars_images",
+    format: async (req, file) => 'jpeg',
+    public_id:(req, file) => `${Date.now()}-${file.originalname}`
   }
-};
+})
 
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter,
-});
+const upload = multer({ storage });
 
 //post/sell a car
 module.exports=[
@@ -48,7 +43,7 @@ module.exports=[
   async (req, res) => {
     if(req.method==='POST'){
      try {
-       console.log(req.file);
+       console.log(req.files);
        console.log(req.body);
  
        const {
@@ -65,7 +60,7 @@ module.exports=[
          carOwnerEmail,
        } = req.body;
  
-       const images = req.files.map((file) => file.filename); // ✅ Correct
+       const images = req.files.map((file) => file.path); // ✅ Correct
  
        const newCar = await Car.create({
          model,
@@ -78,7 +73,7 @@ module.exports=[
          city,
          price,
          armored,
-         images,
+         images, // Save image URLs
          carOwnerEmail,
        });
  
@@ -87,6 +82,7 @@ module.exports=[
        if (error.name === "ValidationError") {
          return res.json({ message: error.message });
        }
+       console.error("Error posting car:", error);
      }
     }
    }
