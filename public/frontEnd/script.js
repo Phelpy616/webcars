@@ -899,7 +899,8 @@ try {
           localStorage.removeItem("loggedUserId");
           localStorage.removeItem("loggedUserEmail");
 
-          window.location.href = "/frontEnd/login.html"; // Redirect to login page
+          // window.location.href = "/frontEnd/login.html"; // Redirect to login page
+          window.location.replace("/frontEnd/login.html");
           window.location.reload(); // Force page refresh
         })
         .catch((error) => console.error("Logout failed:", error));
