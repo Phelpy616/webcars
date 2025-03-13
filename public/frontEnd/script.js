@@ -48,7 +48,7 @@ fetch("../api/cars")
 
         const html = `
         <div class="carPreview car-card" data-carid="${car._id}">
-          <div><img src="${car.images[0]}"</div>
+          <div><img src="${car.images[0]}"/></div>
           <p class="name">${car.make} ${car.model}</p>
           <p>${car.gearbox}</p>
           <h2>$${car.price}</h2>
