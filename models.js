@@ -13,6 +13,7 @@ const carSchema = new mongoose.Schema({
     required: true,
     minlength: [2, "Must be 2-15 characters."],
     maxlength: [15, "Must be 2-15 characters."],
+    required: true
   },
 
   year: {
@@ -20,6 +21,7 @@ const carSchema = new mongoose.Schema({
     required: true,
     minlength: [4, "Must be 4 numbers, like 2024!"],
     maxlength: [4, "Must be 4 numbers, like 2024!"],
+    required: true
   },
 
   color: {
@@ -27,15 +29,18 @@ const carSchema = new mongoose.Schema({
     required: true,
     minlength: [2, "Must be 2-15 characters."],
     maxlength: [15, "Must be 2-15 characters."],
+    required: true
   },
 
-  miles: { type: Number },
+  //Numbers should be stored as numbers, to math operations
+  //sorting and filtering, here I'm using string because it's a template for demonstration
+  miles: { type: String, required: true },
 
-  fueltype: { type: String },
+  fueltype: { type: String, required: true },
 
-  gearbox: { type: String },
+  gearbox: { type: String, required: true },
 
-  city: { type: String },
+  city: { type: String, required: true },
 
   //Numbers should be stored as numbers, to math operations
   //sorting and filtering, here I'm using string because it's a template for demonstration

@@ -381,6 +381,18 @@ try {
         event.target.value = ""; // Clear input if empty
       }
     });
+
+    const miles = document.getElementById("miles")
+
+    miles.addEventListener("input", (event) => {
+      let value = event.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+      if (value !== "") {
+        event.target.value = parseInt(value, 10).toLocaleString();
+      } else {
+        event.target.value = ""; // Clear input if empty
+      }
+    });
   }
 
   document.querySelector(".createAdBtn").addEventListener("click", async () => {
