@@ -124,7 +124,9 @@ try {
         return response.json();
       })
       .then((data) => {
-        alert(data.message);
+        if(data.message !== "Make found"){
+          alert(data.message);
+        }
 
         if (!data.cars) return;
 
