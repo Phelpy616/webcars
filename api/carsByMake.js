@@ -40,7 +40,7 @@ if(req.method === 'GET'){
 
   if (!exactMatch) return res.json({ message: "No cars with this make!" });
 
-  res.json({ message: "Make found", cars });
+  res.json({ cars });
 } catch (error) {
   console.error(error);
   res.status(500).json({ message: "Error fetching cars" });
