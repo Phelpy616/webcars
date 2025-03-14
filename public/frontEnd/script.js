@@ -390,6 +390,7 @@ try {
     const imagesInput = document.getElementById("images");
     const armored = document.querySelector(".armored input").checked;
     const carOwnerEmail = localStorage.getItem("loggedUserEmail");
+    const description = document.getElementById('description')
 
     // Check if all required fields are filled
     if (
@@ -420,6 +421,7 @@ try {
     formData.append("price", price);
     formData.append("armored", armored);
     formData.append("carOwnerEmail", carOwnerEmail);
+    formData.append("description", description);
 
     // Append images (limit to 3 images)
     if (imagesInput.files.length > 3) {

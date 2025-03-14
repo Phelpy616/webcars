@@ -51,6 +51,12 @@ const carSchema = new mongoose.Schema({
   },
 
   carOwnerEmail: { type: String },
+
+  description: {
+    type:String,
+    minlength: [5, 'Description must have at least 5 letters'],
+    maxlength: [60, 'Description must have a maximum of 60 letters']
+  }
 });
 
 //user schema

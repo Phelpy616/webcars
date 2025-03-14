@@ -58,6 +58,7 @@ module.exports=[
          price,
          armored,
          carOwnerEmail,
+         description
        } = req.body;
  
        const images = req.files.map((file) => file.path); // ✅ Correct
@@ -75,6 +76,7 @@ module.exports=[
          armored,
          images, // Save image URLs
          carOwnerEmail,
+         description
        });
  
        res.json({ message: "Ad created", car: newCar });

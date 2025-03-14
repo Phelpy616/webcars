@@ -136,7 +136,7 @@ body.no-scroll {
 
 .carInfoContainer .carInfo {
   width: 40%;
-  height: 950px;
+  height: auto;
   background-color: white;
   display: flex;
   flex-direction: column;
