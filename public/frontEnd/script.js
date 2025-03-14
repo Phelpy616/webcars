@@ -59,7 +59,7 @@ fetch("../api/cars")
           <div><img src="${car.images[0]}"/></div>
           <p class="name">${car.make} ${car.model}</p>
           <p>${car.gearbox}</p>
-          <h2>$${car.price}</h2>
+          <h2>${car.price}</h2>
           <div class="yearAndMiles">
             <p>${car.year}</p>
             <p>${car.miles} MILES</p>
@@ -369,6 +369,20 @@ if (localStorage.getItem("ClickedCarId")) {
 
 //Posting/selling a car
 try {
+  if(window.location.pathname.endsWith("sellCar.html")){
+    const price = document.getElementById("price");
+
+    price.addEventListener("input", (event) => {
+      let value = event.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+
+      if (value !== "") {
+        event.target.value = `$${parseInt(value, 10).toLocaleString()}`;
+      } else {
+        event.target.value = ""; // Clear input if empty
+      }
+    });
+  }
+
   document.querySelector(".createAdBtn").addEventListener("click", async () => {
     if (localStorage.getItem("isLoggedIn") !== "yes")
       return alert("You need to log in to sell a car!");

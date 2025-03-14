@@ -37,7 +37,9 @@ const carSchema = new mongoose.Schema({
 
   city: { type: String },
 
-  price: { type: Number, required: true },
+  //Numbers should be stored as numbers, to math operations
+  //sorting and filtering, here I'm using string because it's a template for demonstration
+  price: { type: String, required: true },
 
   images: {
     type: [String], // Array of image URLs
