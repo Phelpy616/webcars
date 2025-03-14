@@ -390,7 +390,7 @@ try {
     const imagesInput = document.getElementById("images");
     const armored = document.querySelector(".armored input").checked;
     const carOwnerEmail = localStorage.getItem("loggedUserEmail");
-    const description = document.getElementById('description')
+    const description = document.getElementById('description').value
 
     // Check if all required fields are filled
     if (
