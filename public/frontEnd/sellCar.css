@@ -333,6 +333,18 @@ body.no-scroll {
     display: none;
   }
 
+  /*Loading when creating add*/
+  .loading div{
+    width: 90%;
+    height: 200px;
+    gap: 10px;
+  }
+  
+  .loading div img {
+    width: 40px; 
+    height: 40px;
+  }
+
   /*car info*/
   .carInfoContainer {
     margin-top: 0;
