@@ -113,7 +113,7 @@ fetch("../api/cars")
   })
   .catch((error) => console.log("Error fetching car data:", error));
 
-//Get cars by the make
+//Search cars by the make
 const searchField = document.querySelector(".searchField input");
 const searchBtn = document.querySelector(".searchBtn");
 
@@ -139,12 +139,20 @@ try {
 } catch {}
 
 // Fetch and display cars by the make
+if(window.location.pathname.endsWith('carsByMake.html')){
+  const loading = document.querySelector('.loading');
+  loading.classList.add('display')
+}
+
 if (window.location.pathname.endsWith("carsByMake.html")) {
   fetch(`../api/carsByMake?make=${localStorage.getItem("carMake")}`)
     .then((response) => {
       return response.json();
     })
     .then(async (data) => {
+      const loading = document.querySelector('.loading');
+      loading.classList.remove('display')
+
       console.log(data.cars);
       const favoriteCarIds = await fetchFavorites();
 
@@ -225,6 +233,11 @@ try {
 } catch (error) {}
 
 //fetching individual car
+if(window.location.pathname.endsWith('individualCar.html')){
+  const loading = document.querySelector('.loading')
+  loading.classList.add('display')
+}
+
 if (localStorage.getItem("ClickedCarId")) {
   const carId = JSON.parse(localStorage.getItem("ClickedCarId"));
 
@@ -232,6 +245,9 @@ if (localStorage.getItem("ClickedCarId")) {
   fetch(`../api/individualCar/${carId}`)
     .then((response) => response.json())
     .then((data) => {
+      const loading = document.querySelector('.loading')
+      loading.classList.remove('display')
+
       console.log(data.car);
       localStorage.setItem(
         "clickedCar",
@@ -355,6 +371,11 @@ try {
     if (localStorage.getItem("isLoggedIn") !== "yes")
       return alert("You need to log in to sell a car!");
 
+    const loading = document.querySelector('.loading')
+    const body = document.body
+    loading.classList.add('display')
+    body.classList.add('no-scroll')
+
     const model = document.getElementById("model").value.trim();
     const make = document.getElementById("make").value;
     const year = document.getElementById("year").value.trim();
@@ -414,6 +435,12 @@ try {
       });
 
       const data = await response.json();
+
+      const loading = document.querySelector('.loading')
+      const body = document.body
+      loading.classList.remove('display')
+      body.classList.remove('no-scroll')
+
       alert(data.message);
     } catch (error) {
       console.error("Error:", error);
@@ -631,8 +658,11 @@ try {
     });
 } catch (error) {}
 
-//get the user favorite cars
+//Get the user favorite cars
 if (window.location.pathname.endsWith("favorites.html")) {
+   const loading = document.querySelector('.loading')
+   loading.classList.add('display')
+
   fetch("../api/getUser", {
     method: "GET",
     headers: {
@@ -641,6 +671,9 @@ if (window.location.pathname.endsWith("favorites.html")) {
   })
     .then((response) => response.json())
     .then((data) => {
+      const loading = document.querySelector('.loading')
+      loading.classList.remove('display')
+
       const favoriteCarIds = data.currentUser.favorites;
       console.log(data.currentUser, favoriteCarIds);
       favoriteCarIds.forEach((carId) => {

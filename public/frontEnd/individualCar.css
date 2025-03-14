@@ -228,6 +228,28 @@ body {
   color: white;
 }
 
+/*Spinner/loading when FETCHING data*/
+.loading{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading.display{
+  display: flex;
+}
+
+.loading img{
+  animation: spin 1s linear infinite;
+  width: 40px;
+}
+
 /*Spinner in the middle of the page when sending email*/
 .spinnerContainer {
   width: 100%;
@@ -249,7 +271,7 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.spinnerContainer div:nth-last-child(1) {
+.spinnerContainer div{
   width: 30%;
   height: 300px;
   background-color: white;
@@ -261,7 +283,7 @@ body.no-scroll {
   gap: 30px;
 }
 
-.spinnerContainer img {
+.spinnerContainer div img {
   width: 50px; /* Adjust size as needed */
   height: 50px;
   animation: spin 1s linear infinite;

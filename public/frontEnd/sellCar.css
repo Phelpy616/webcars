@@ -76,6 +76,54 @@ body {
   display: none;
 }
 
+/*Loading when CREATING ad*/
+.loading{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.405);;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading.display {
+  display: flex;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.loading div{
+  width: 30%;
+  height: 300px;
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.loading div img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /*car info*/
 .carInfoContainer {
   width: 100%;

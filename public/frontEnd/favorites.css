@@ -163,6 +163,33 @@ body {
   margin-top: 88px;
 }
 
+.car-list-favorites .loading{
+  width: 1050px;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-list-favorites .loading.display{
+  display: flex;
+}
+
+.car-list-favorites .loading img{
+  animation: spin 1s linear infinite;
+  width: 30px;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .carPreview {
   width: 279px;
   height: 400px;
