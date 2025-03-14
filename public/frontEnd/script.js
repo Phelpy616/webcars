@@ -317,7 +317,7 @@ if (localStorage.getItem("ClickedCarId")) {
 
 
         <div class="carPrice">
-          <h2>$${data.car.price}</h2>
+          <h2>${data.car.price}</h2>
         </div>
 
         <div class="infoContainer">
