@@ -356,7 +356,7 @@ if (localStorage.getItem("ClickedCarId")) {
       const spects = document.querySelector(".spects");
       spects.insertAdjacentHTML("afterbegin", spectsElements);
 
-      const priceElements = `<h1>$${data.car.price}</h1>`;
+      const priceElements = `<h1>${data.car.price}</h1>`;
       const price = document.querySelector(".price");
       price.insertAdjacentHTML("afterbegin", priceElements);
     })
