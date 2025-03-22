@@ -101,7 +101,7 @@ fetch("../api/cars")
                <img class="heart filled" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAXpJREFUaEPtlw0OgjAMhcfJ1JOpJ1NPpjahZsJ+2q6FjmwJQRLXva99bGUKnY+pc/1hAOxdwVGBHitwm0WfQgjn7/Wcn1/zb3zOscEcuGBAjHjco3ik3HAsBMKvpKghXBJCOPMBBBNVXJICANl6EIXHf4NKYEY54uMYqUT8SakBSBcW8GanFKtRApBmXlM8xspWogTwtlDSEDOpNQfgwTpL1qSVcgDeso8wK70pAE/er1YhBQBbJh40DZY1mbqyUW8AcLbAjvQbKQCv/k++B4cE8PwOkCzk8QxA+3QPsGopDnmQQbk82ojVSgCEt+2U1cwBgKeWQtROe7GS+IMGt64934fqt3Htk3JPiKp4EEcF2NpOJPFcgK0gyOIlANYQLPFSACsItvgWAG0IkfhWAC0IsXgNgFaIJvFaAFKIZvGaAFwIFfHaAFQINfEWADUIVfFWADkIdfGWAEsIE/HWAAgR37G7VbtzulG1RTUDDQDNbEpijQpIsqY55wOCyUwxoVcsUwAAAABJRU5ErkJggg=="
                   style="display: ${isFavorite ? "inline-block" : "none"};" />
              </div> 
-            <p class="price">$${car.price}</p>
+            <p class="price">${car.price}</p>
           </div>
         </div>`;
 
@@ -168,7 +168,7 @@ if (window.location.pathname.endsWith("carsByMake.html")) {
           <div><img src="${car.images[0]}"/></div>
           <p class="name">${car.make} ${car.model}</p>
           <p>${car.gearbox}</p>
-          <h2>$${car.price}</h2>
+          <h2>${car.price}</h2>
           <div class="yearAndMiles">
             <p>${car.year}</p>
             <p>${car.miles} MILES</p>
@@ -202,7 +202,7 @@ if (window.location.pathname.endsWith("carsByMake.html")) {
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAXpJREFUaEPtlw0OgjAMhcfJ1JOpJ1NPpjahZsJ+2q6FjmwJQRLXva99bGUKnY+pc/1hAOxdwVGBHitwm0WfQgjn7/Wcn1/zb3zOscEcuGBAjHjco3ik3HAsBMKvpKghXBJCOPMBBBNVXJICANl6EIXHf4NKYEY54uMYqUT8SakBSBcW8GanFKtRApBmXlM8xspWogTwtlDSEDOpNQfgwTpL1qSVcgDeso8wK70pAE/er1YhBQBbJh40DZY1mbqyUW8AcLbAjvQbKQCv/k++B4cE8PwOkCzk8QxA+3QPsGopDnmQQbk82ojVSgCEt+2U1cwBgKeWQtROe7GS+IMGt64934fqt3Htk3JPiKp4EEcF2NpOJPFcgK0gyOIlANYQLPFSACsItvgWAG0IkfhWAC0IsXgNgFaIJvFaAFKIZvGaAFwIFfHaAFQINfEWADUIVfFWADkIdfGWAEsIE/HWAAgR37G7VbtzulG1RTUDDQDNbEpijQpIsqY55wOCyUwxoVcsUwAAAABJRU5ErkJggg=="
               style="display: ${isFavorite ? "inline-block" : "none"};" />
             </div>
-            <p class="price">$${car.price}</p>
+            <p class="price">${car.price}</p>
           </div>
         </div> `;
 
@@ -726,7 +726,7 @@ if (window.location.pathname.endsWith("favorites.html")) {
                   <div><img src="${carData.car.images[0]}" /></div>
                   <p class="name">${carData.car.make} ${carData.car.model}</p>
                   <p>${carData.car.gearbox}</p>
-                  <h2>$${carData.car.price}</h2>
+                  <h2>${carData.car.price}</h2>
                   <div class="yearAndMiles">
                     <p>${carData.car.year}</p>
                     <p>${carData.car.miles} MILES</p>
@@ -770,7 +770,7 @@ if (window.location.pathname.endsWith("favorites.html")) {
                             isFavorite ? "inline-block" : "none"
                           };" />
                         </div>
-                          <p class="price">$${carData.car.price}</p>
+                          <p class="price">${carData.car.price}</p>
                         </div>
                   </div> `;
 
