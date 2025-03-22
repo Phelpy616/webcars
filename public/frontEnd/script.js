@@ -1109,3 +1109,9 @@ try {
     logOutContainer.classList.remove("hidden");
   }
 } catch {}
+
+//go to ConstellarWeb page
+const goBackBtn = document.querySelector('.tag div')
+goBackBtn.addEventListener('click',()=>{
+  window.location.href = 'https://constellarweb.com/'
+})
