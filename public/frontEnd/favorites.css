@@ -35,6 +35,27 @@ body {
   display: none;
 }
 
+/*tag*/
+.tag{
+  width: auto;
+  height: auto;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3000;
+  background-color: black;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.tag p{
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  color: white;
+}
+
 .header h1,
 .header h2 {
   margin: 0;
@@ -414,6 +435,28 @@ body {
   .menu .menuScndChild .navigation .logOutContainer.hidden {
     display: none;
   }
+
+
+  /*tag*/
+.tag{
+  width: auto;
+  height: auto;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 3000;
+  background-color: black;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.tag p{
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 0.7rem;
+  color: white;
+}
 
   /*Car container*/
   .container {
